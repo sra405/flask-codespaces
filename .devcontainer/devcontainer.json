@@ -27,21 +27,13 @@
 	// Use 'postCreateCommand' to run commands after the container is created.
 	"postCreateCommand": "",
 
-	"postAttachCommand": {
-		"server": "python src/app.py"
-	},
+	"postAttachCommand": "python src/app.py",
 
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
 			"settings": {
 				"python.defaultInterpreterPath": "/opt/conda/bin/python"
-			},
-			"codespaces": {
-			"openFiles": [
-					"README.md",
-					"src/app.py"
-				]
 			},
 			"extensions": [
 				"ms-python.python",
@@ -51,6 +43,12 @@
 				"ms-azuretools.vscode-docker",
 				"DavidAnson.vscode-markdownlint"
 			]
+		},
+		"codespaces": {
+			"openFiles": [
+					"README.md",
+					"src/app.py"
+				]
 		}
 	}
 
