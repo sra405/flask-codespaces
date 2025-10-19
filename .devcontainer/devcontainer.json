@@ -1,26 +1,47 @@
 // For format details, see https://aka.ms/devcontainer.json. For config options, see the
 // README at: https://github.com/devcontainers/templates/tree/main/src/miniconda
 {
-	"name": "Miniconda demo",
+	"name": "Flask Micromamba Boilerplate",
 	"build": { 
 		"context": "..",
 		"dockerfile": "Dockerfile"
+	},
+
+	"hostRequirements": {
+		"cpus": 4
 	},
 
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": []
+	"forwardPorts": [5000],
+
+	"portsAttributes": {
+		"5000": {
+		"label": "Application",
+		"onAutoForward": "openPreview"
+		}
+	},
 
 	// Use 'postCreateCommand' to run commands after the container is created.
-	"postCreateCommand": "conda init",
+	"postCreateCommand": "",
+
+	"postAttachCommand": {
+		"server": "python src/app.py"
+	},
 
 	// Configure tool-specific properties.
 	"customizations": {
 		"vscode": {
 			"settings": {
-				"python.defaultInterpreterPath": "/opt/conda/envs/demo"
+				"python.defaultInterpreterPath": "/opt/conda/bin/python"
+			},
+			"codespaces": {
+			"openFiles": [
+					"README.md",
+					"src/app.py"
+				]
 			},
 			"extensions": [
 				"ms-python.python",

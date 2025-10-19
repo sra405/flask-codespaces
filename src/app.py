@@ -19,23 +19,23 @@ def index():
 '''
 # EXAMPLE BACKEND
 # An example of completing some logic and returning data in JSON
-@app.route('/time/')
+'''
+@app.route('/time')
 def time():
     from datetime import datetime
     now = datetime.now()
     return(
         jsonify(time=now.strftime("%H:%M:%S"))
     )
-'''
 
 '''
 # EXAMPLE DYNAMIC FRONTEND
 # An example of how to pass parameters from the URL into the app
-@app.route('/hello/')
+'''
+@app.route('/hello')
 @app.route('/hello/<name>')
 def hello(name=None):
     return render_template('hello.html', name=name)
-'''
 
 if __name__ == "__main__":
     
